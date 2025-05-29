@@ -14,8 +14,6 @@ const code = [
   '94677640319073340268967765063930'
 ]
 
-localStorage.setItem("hints", JSON.stringify(hints));
-
 const hint_box = document.getElementById("hint-text");
 function showHint() {
   const hint_that_gets = JSON.parse(localStorage.getItem("you_hint")) || [];
