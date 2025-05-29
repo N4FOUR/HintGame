@@ -80,16 +80,25 @@
     const codeEl = document.getElementById("code");
 
     function generateQuestion() {
-      const operators = ["+", "-", "*"];
-      num1 = Math.floor(Math.random() * 10) + 1;
-      num2 = Math.floor(Math.random() * 10) + 1;
-      operator = operators[Math.floor(Math.random() * operators.length)];
-      correctAnswer = eval(`${num1} ${operator} ${num2}`);
-      questionEl.textContent = `${num1} ${operator} ${num2} = ?`;
-      input.value = "";
-      input.focus();
-      resetTimer();
-    }
+  const operators = ["+", "-", "*"];
+  operator = operators[Math.floor(Math.random() * operators.length)];
+
+  num1 = Math.floor(Math.random() * 10) + 1;
+  num2 = Math.floor(Math.random() * 10) + 1;
+
+  // ป้องกันคำตอบติดลบเฉพาะกรณี operator คือ -
+  if (operator === "-" && num2 > num1) {
+    // สลับค่า num1 กับ num2
+    [num1, num2] = [num2, num1];
+  }
+
+  correctAnswer = eval(`${num1} ${operator} ${num2}`);
+  questionEl.textContent = `${num1} ${operator} ${num2} = ?`;
+  input.value = "";
+  input.focus();
+  resetTimer();
+}
+
 
     function resetTimer() {
       clearInterval(timerId);
