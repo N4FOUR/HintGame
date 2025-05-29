@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math Quiz Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    #question {
+      font-size: 28px;
+      margin: 20px 0;
+    }
+    input {
+      font-size: 20px;
+      padding: 10px;
+      width: 100px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    #score, #timer {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    #gameover {
+      color: red;
+      font-size: 22px;
+      margin-top: 20px;
+      display: none;
+    }
+    #code {
+      color: green;
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+      display: none;
+    }
+    #restartBtn {
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Math Quiz Game</h1>
+  <p>ตอบได้ 40 คะแนน ชนะ</p>
+  <div id="score">Score: 0</div>
+  <div id="timer">Time left: 10s</div>
+  <div id="question">Loading...</div>
+  <input type="number" id="answerInput" placeholder="Your answer" />
+  <br />
+  <button onclick="submitAnswer()">Submit</button>
+  <button id="restartBtn" onclick="restartGame()">🔁 Restart</button>
+  <div id="gameover">⛔ Game Over!</div>
+  <div id="code">🎉 CODE: 94677640319073340268967765063930</div>
+
+  <script>
+    let num1, num2, operator, correctAnswer;
+    let score = 0;
+    let timeLeft = 10;
+    let timerId;
+
+    const questionEl = document.getElementById("question");
+    const scoreEl = document.getElementById("score");
+    const timerEl = document.getElementById("timer");
+    const input = document.getElementById("answerInput");
+    const gameover = document.getElementById("gameover");
+    const restartBtn = document.getElementById("restartBtn");
+    const codeEl = document.getElementById("code");
+
+    function generateQuestion() {
+      const operators = ["+", "-", "*"];
+      num1 = Math.floor(Math.random() * 10) + 1;
+      num2 = Math.floor(Math.random() * 10) + 1;
+      operator = operators[Math.floor(Math.random() * operators.length)];
+      correctAnswer = eval(`${num1} ${operator} ${num2}`);
+      questionEl.textContent = `${num1} ${operator} ${num2} = ?`;
+      input.value = "";
+      input.focus();
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(timerId);
+      timeLeft = 10;
+      timerEl.textContent = `Time left: ${timeLeft}s`;
+      timerId = setInterval(() => {
+        timeLeft--;
+        timerEl.textContent = `Time left: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+          endGame();
+        }
+      }, 1000);
+    }
+
+    function submitAnswer() {
+      const userAnswer = parseInt(input.value);
+      if (userAnswer === correctAnswer) {
+        score++;
+        scoreEl.textContent = `Score: ${score}`;
+        if (score >= 40) {
+          showCode();
+          endGame();
+        } else {
+          generateQuestion();
+        }
+      } else {
+        endGame();
+      }
+    }
+
+    function endGame() {
+      clearInterval(timerId);
+      gameover.style.display = "block";
+      input.disabled = true;
+      restartBtn.style.display = "inline-block";
+    }
+
+    function showCode() {
+      codeEl.style.display = "block";
+    }
+
+    function restartGame() {
+      score = 0;
+      scoreEl.textContent = "Score: 0";
+      input.disabled = false;
+      gameover.style.display = "none";
+      restartBtn.style.display = "none";
+      codeEl.style.display = "none";
+      generateQuestion();
+    }
+
+    // Start game
+    generateQuestion();
+  </script>
+  <br>
+  <a href="index.html">กลับ</a>
+</body>
+</html>

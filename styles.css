@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+nav {
+    background-color: #003380;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px; 
+}
+
+nav ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main div {
+    text-align: center;
+    margin-top: 20px;
+}
+main div a {
+    color: #ffffff;
+    background-color: lightgreen;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.codefrom {
+  background: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 16px;
+  padding: 20px;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.codefrom label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.codefrom input[type="text"] {
+  padding: 10px 14px;
+  border: 1.5px solid #bbb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.2s ease;
+}
+
+.codefrom input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.codefrom button {
+  padding: 10px 14px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.codefrom button:hover {
+  background-color: #0056b3;
+}
+
+
+#hint-box {
+    background-color: #e0f7fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin-bottom: 10px;
+    }
+    
+}

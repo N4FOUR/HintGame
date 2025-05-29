@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game ตามหาคำใบ้</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="showHint()">
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="game.html">เล่นเกม</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>ยินดีต้อนรับสู่เกม</h1>
+        <h2>" ตามหาคำใบ้ "</h2>
+        <p>อยากได้คำใบ้ก็ต้องเล่นให้ผ่านนะ 😊✌️</p>
+        <div>
+            <a href="game.html" class="start-button">เริ่มเล่นเกม</a>
+        </div>
+    </main>
+    <div class="codefrom">
+       <label for="text">CODE:</label>
+       <input type="text" id="codeinput" placeholder="ใส่โค้ดที่นี่">
+       <button id="submit-code" onclick="getHint()">ส่งโค้ด</button>
+    </div>
+    <div id="hint-box">
+        <h2>คำใบ้</h2>
+        <p id="hint-text">ใส่โค้ดเพื่อรับคำใบ้</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

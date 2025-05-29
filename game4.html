@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e6f7ff;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    #game-container {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="number"], button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game-container">
+    <h1>ทายเลข 1 - 100</h1>
+    <input type="number" id="guessInput" placeholder="พิมพ์เลขของคุณ" min="1" max="100">
+    <button onclick="checkGuess()">ทายเลย!</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    let tries = 0;
+
+    function checkGuess() {
+      const guess = parseInt(document.getElementById('guessInput').value);
+      const message = document.getElementById('message');
+      tries++;
+
+      if (isNaN(guess) || guess < 1 || guess > 100) {
+        message.textContent = "⛔ เดาเลขระหว่าง 1 ถึง 100 เท่านั้น!";
+        message.style.color = "black";
+        return;
+      }
+
+      if (guess === randomNumber) {
+        message.textContent = "🎉 ถูกต้อง! Code : 02823613904885417447196442882883";
+        message.style.color = "green";
+      } else if (guess < randomNumber) {
+        message.textContent = "📉 น้อยไป เอาใหม่";
+        message.style.color = "blue";
+      } else {
+        message.textContent = "📈 เยอะไป เอาใหม่";
+        message.style.color = "red";
+      }
+    }
+  </script>
+  <a href="index.html">กลับ</a>
+</body>
+</html>
