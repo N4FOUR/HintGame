@@ -54,7 +54,7 @@
 <body>
 
   <h1>🧠 Math Quiz Game</h1>
-  <p>ตอบได้ 40 คะแนน ชนะ</p>
+  <p>ตอบได้ 30 คะแนน ชนะ</p>
   <div id="score">Score: 0</div>
   <div id="timer">Time left: 10s</div>
   <div id="question">Loading...</div>
@@ -63,7 +63,7 @@
   <button onclick="submitAnswer()">Submit</button>
   <button id="restartBtn" onclick="restartGame()">🔁 Restart</button>
   <div id="gameover">⛔ Game Over!</div>
-  <div id="code">🎉 CODE: 94677640319073340268967765063930</div>
+  <div id="code">🎉 คำใบ้คือ พี่เป็นผู้ชาย</div>
 
   <script>
     let num1, num2, operator, correctAnswer;
@@ -118,7 +118,7 @@
       if (userAnswer === correctAnswer) {
         score++;
         scoreEl.textContent = `Score: ${score}`;
-        if (score >= 40) {
+        if (score >= 30) {
           showCode();
           endGame();
         } else {
@@ -154,6 +154,5 @@
     generateQuestion();
   </script>
   <br>
-  <a href="index.html">กลับ</a>
 </body>
 </html>
